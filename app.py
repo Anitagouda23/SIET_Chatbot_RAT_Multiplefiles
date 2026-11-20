@@ -2,14 +2,15 @@ import streamlit as st
 from rag_engine import load_base,ask_rag
 st.set_page_config(page_title = "SIET_Chatbot",layout = 'centered')
 st.title("Explore SIET with Chatbot")
-st.caption("Ask anything about college information...")
-st.caption("Developed by Akshata Ganesh")
+st.caption("Ask anything about college information,Course imformation,Placements,FAQs, Rules and regulations  ...")
+st.caption("RAG Pipline with Multiple files")
+st.caption("Developed by Anita Ashok")
 
 mykey = st.secrets["GROQ_API_KEY"]
 
 @st.cache_resource
 def initiate_rag():
-  return load_base("01_College_Information.pdf")
+  return load_base("college_docs")
 index,embed_model,chunks = initiate_rag()
 
 if "chat_hist" not in st.session_state:
